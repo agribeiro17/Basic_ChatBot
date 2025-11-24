@@ -17,6 +17,16 @@ This project provides a simple command-line chatbot that uses Ollama to run a lo
 *   **Asynchronous Processing:** Takes advantage of FastAPI's asynchronous capabilities to handle multiple users and requests efficiently.
 *   **Simple and Clean UI:** A clean and simple chat interface styled with CSS.
 
+## Demonstration
+
+### Main Page
+The main page of the chatbot application upon loading.
+![Main Page](images/main.png)
+
+### Simple Conversation
+An example of a simple conversation with the chatbot, showcasing its ability to respond to greetings and answer questions.
+![Simple Conversation](images/simple_convo.png)
+
 ## Requirements
 
 *   Python 3.6+

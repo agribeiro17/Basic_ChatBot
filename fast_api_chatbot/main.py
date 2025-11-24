@@ -9,11 +9,13 @@ import ollama # Importa ollama
 from pydantic import BaseModel # Data validation library, BaseModel is used to define the structures and data types of the data expected to receive in an API request
 
 import uvicorn # For cserver
-
+import logging
 
 # ---- CREATING FastAPI APP ----  #
 app = FastAPI()
-
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 # ---- MOUNTING STATIC FILES --- #
 '''
  - app.mount() -> Creates a path that doesn't run python code but instead serves files directly from the "/static" dir.
@@ -31,7 +33,7 @@ app.mount("/static", StaticFiles(directory="fast_api_chatbot/static"), name="sta
                Tells the application that all HTML template files are located in the directory defined.
 '''
 
-templates = Jinja2Templates(directory="/fast_api_chatbot/templates")
+templates = Jinja2Templates(directory="fast_api_chatbot/templates")
 
 # ---- DEFINING THE REQUEST DATA SHAPE ---- #
 '''
@@ -93,7 +95,9 @@ async def chat(chat_message: ChatMessages):
 # ---- RUNNING THE APPLICATION ---- #
 
 if __name__ == "__main__":
-    uvicorn.run(app,
+    uvicorn.run("main:app",
                 host="0.0.0.0",
-                port=8000
+                port=8000,
+                reload=True,
+                log_level="info"
                 )
