@@ -1,4 +1,4 @@
-// web_chatbot/static/script.js
+
 const chatBox = document.getElementById('chat-box');
 const chatForm = document.getElementById('chat-form');
 const userInput = document.getElementById('user-input');
